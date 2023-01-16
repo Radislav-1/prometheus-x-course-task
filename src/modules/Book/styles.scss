@@ -1,0 +1,26 @@
+.book-wrapper {
+  .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .prise{
+    border: 1px dotted #000000;
+    padding: 15px;
+    width: 300px;
+  }
+
+  .bold{
+    font-weight: bold;
+    padding-right: 8px;
+  }
+  .book{
+    padding: 15px;
+  }
+  .description{
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}

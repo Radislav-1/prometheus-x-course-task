@@ -1,0 +1,50 @@
+@import './reset';
+
+body {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000;
+    overflow: hidden;
+}
+
+
+.button{
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 0 16px;
+  margin-top: 16px;
+}
+
+.button.gray{
+    background: gray;
+}
+
+.button-icon{
+  cursor: pointer;
+}
+
+h1{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h2{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+input{
+  border: 1px solid #000000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: 60px;
+}

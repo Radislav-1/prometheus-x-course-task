@@ -1,0 +1,35 @@
+{
+  "extends": "tslint-config-airbnb",
+  "parser": "babel-tslint",
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ],
+    "import-name": [false, { "graphqlTag": "gql" }],
+    "max-len": [2, {"code": 120, "tabWidth": 2, "ignoreUrls": true}],
+    "semi": 2,
+    "max-line-length": [
+      true,
+      {
+        "limit": 120,
+        "ignore-pattern": "^import [^,]+ from |^export | implements"
+      }
+    ],
+    "align": true
+  },
+  "globals": {
+    "uploadedErrorsFiles": [],
+    "uploadedFiles": [],
+    "document": true,
+    "window": true
+  }
+}
