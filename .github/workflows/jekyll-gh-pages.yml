@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1.0.7
         with:
           name: github-pages
-          path: _site/
+          path: dist/
 
   # Deployment job
   deploy:
@@ -58,3 +58,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/upload-pages-artifact@v1
+        with:
+          name: github-pages
+          path: dist/
