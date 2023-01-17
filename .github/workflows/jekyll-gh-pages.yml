@@ -39,7 +39,15 @@ jobs:
           
       - name: npm build
         run: |
-          npm run build  
+          npm run build
+          
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
 
   # Deployment job
   deploy:
@@ -51,4 +59,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-artifact@v3
