@@ -49,12 +49,10 @@ jobs:
             dist
             !dist/**/*.md
             
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: my-artifact
-          path: my_file.txt
-          retention-days: 5
+          folder: dist # The folder the action should deploy.
 
   # Deployment job
   deploy:
