@@ -49,11 +49,12 @@ jobs:
             dist
             !dist/**/*.md
             
-      - name: Upload Artifact
+      - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: my_files.tar
+          path: my_file.txt
+          retention-days: 5
 
   # Deployment job
   deploy:
