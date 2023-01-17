@@ -26,16 +26,21 @@ export const ProviderMain = (props) => {
     handleToken(value);
   }
 
+  const removeToken = () => {
+    handleToken(null);
+  }
+
   return (
     <MainContext.Provider
       value={{
         token: token,
-        setToken: setToken,
         listBooks: listBooks,
         currentBook: currentBook,
         basketBook: basketBook,
         onSelectBook: onSelectBook,
         onBasketBook: onBasketBook,
+        setToken: setToken,
+        removeToken: removeToken,
       }}
     >
       {children}

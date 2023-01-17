@@ -48,3 +48,51 @@ input{
   border-radius: 4px;
   width: 60px;
 }
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.around {
+    justify-content: space-around;;
+  }
+
+  &.top {
+    align-items: flex-start;
+  }
+
+  &.bottom {
+    align-items: flex-end;
+  }
+
+  &.column {
+    flex-flow: column;
+  }
+
+  &.stretch {
+    align-items: stretch;
+  }
+
+  .start {
+    align-self: flex-start;
+  }
+
+  .end {
+    align-self: flex-end;
+  }
+}
