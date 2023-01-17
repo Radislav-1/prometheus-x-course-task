@@ -15,7 +15,7 @@
   "homepage": "https://gitlab.com/radislaww2011/my-first-project#readme",
   "scripts": {
     "start": "webpack-dev-server --config ./configs/webpack.config.dev.js",
-    "build": "webpack --config ./configs/webpack.config.prod.js",
+    "build": "webpack --mode production --config ./configs/webpack.config.prod.js",
     "lint": "tslint -c tslint.json 'src//*.tsx' --exclude \"node_modules//.{j,t}s\"",
     "prettier": "prettier --write \"src/**/.{ts,js,tsx,jsx}\"",
     "test": "jest",

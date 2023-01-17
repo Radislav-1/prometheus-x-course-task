@@ -27,15 +27,6 @@ module.exports = {
       process: 'process/browser',
       Buffer: ['buffer', 'Buffer'],
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: 'configs/favicon.ico',
-          to: 'favicon.ico',
-          toType: 'file',
-        },
-      ],
-    }),
     new MiniCssExtractPlugin({
       filename: '[hash].style.css',
       chunkFilename: '[id].css',
