@@ -48,6 +48,12 @@ jobs:
           path: |
             dist
             !dist/**/*.md
+            
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: my_files.tar
 
   # Deployment job
   deploy:
