@@ -40,11 +40,6 @@ jobs:
       - name: npm build
         run: |
           npm run build  
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
 
   # Deployment job
   deploy:
