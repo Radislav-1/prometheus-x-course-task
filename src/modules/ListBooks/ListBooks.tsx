@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import './styles.scss';
 
@@ -12,50 +13,101 @@ export const ListBooks = () => {
   console.log('currentBook: ', currentBook);
 
   const [search, handleSearch] = useState('');
+  const [price, handlePrice] = useState<any>('');
+  const [count, handleCount] = useState<any>(1);
+  const [list, handleList] = useState<any>(listBooks?.books);
 
   const onSearch = (e) => {
     const value = e?.target?.value;
 
     handleSearch(value);
-  }
+  };
 
-  const list = !search ? listBooks?.books : listBooks?.books?.filter((item: any) => {
-    return item?.title?.toLowerCase().includes(search.toLowerCase());
-  });
+  useEffect(() => {
+    let filtered = [...listBooks?.books];
+
+    if (search) {
+        filtered = filtered?.filter((item: any) => {
+          return item?.title?.toLowerCase().includes(search.toLowerCase());
+        });
+      }
+
+      if (price) {
+        filtered = filtered ? filtered?.filter((item: any) => {
+          if (price === 10) {
+            return item?.price < price && item?.price > 0;
+          }
+
+          if (price === 50) {
+            return item?.price < price && item?.price > 10;
+          }
+
+          if (price === 100) {
+            return item?.price < price && item?.price > 50;
+          }
+        }) : [];
+      }
+
+      handleList(search || price ? filtered : list);
+  }, [price, search]);
 
   if (currentBook) {
     return (
       <main className="content book-wrapper">
-        <button onClick={() => onSelectBook(null)}>
+        <button
+          className="back-button flex between"
+          onClick={() => onSelectBook(null)}
+        >
+          <KeyboardBackspaceIcon className="icon"/>
           Back
         </button>
-        <img src={currentBook.image }
-             alt={currentBook.title}/>
-        <div className="book">
-          <h2>{currentBook?.title}</h2>
-          <p><span className="bold">Book author:</span>{currentBook?.author}</p>
-          <p><span className="bold">Book level:</span>Beginner</p>
-          <p><span className="bold">Book tags:</span>core</p>
-        </div>
-        <div className="prise">
-          <div className="row"><span>Price:</span><span id="price">{currentBook?.price}</span></div>
-          <div className="row">
-            <label>Count</label>
-            <input type="number" id="name" name="number"/>
+        <div className="book-details flex between top">
+          <img
+            src={currentBook.image }
+            alt={currentBook.title}
+          />
+          <div className="book-info">
+            <h2>{currentBook?.title}</h2>
+            <p><span className="bold label">Book author:</span>{currentBook?.author}</p>
+            <p><span className="bold label">Book level:</span>Beginner</p>
+            <p><span className="bold label">Book tags:</span>core</p>
           </div>
-          <div>
-            <div className="row"><span>Total price:</span><span id="price-total">52.72</span></div>
+          <div className="book-price">
+            <div className="prise">
+              <div className="row"><span className="bold label">Price:</span><span id="price">{currentBook?.price}</span></div>
+              <div className="row">
+                <label className="bold label">Count: </label>
+                <input
+                  type="number"
+                  id="name"
+                  name="number"
+                  onChange={(e) => handleCount(e?.target?.value)}
+                />
+              </div>
+              <div>
+                <div className="row"><span className="bold label">Total price:</span><span id="price-total">{currentBook?.price * count}</span></div>
+              </div>
+              <br />
+              <button
+                className="button"
+                onClick={() => {
+                  onBasketBook({
+                      ...currentBook,
+                      price: currentBook?.price * count,
+                    });
+                    onSelectBook(null);
+                  }
+                }
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
-          <button
-            className="button"
-            onClick={() => onBasketBook(currentBook)}
-          >
-            Add to cart
-          </button>
         </div>
       </main>
     )
   }
+
 
   return (
     <main className="content list-books-wrapper">
@@ -70,10 +122,12 @@ export const ListBooks = () => {
             </button>
         </div>
         <div className="prise">
-          <select>
-            <option value="1">From 0$ to 10$</option>
-            <option value="2">From 10$ to 50$</option>
-            <option value="3">From 50$ to 10$</option>
+          <select
+            onChange={(e: any) => handlePrice(e?.target?.value - 0)}
+          >
+            <option value="10">From 0$ to 10$</option>
+            <option value="50">From 10$ to 50$</option>
+            <option value="100">From 50$ to 100$</option>
           </select>
         </div>
       </div>

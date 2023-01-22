@@ -96,3 +96,25 @@ input{
     align-self: flex-end;
   }
 }
+
+.back-button {
+  cursor: pointer;
+}
+
+.label {
+  margin-right: 8px;
+}
+
+.icon-button {
+  cursor: pointer;
+  color: red;
+}
+
+.content {
+  height: calc(100vh - 40px);
+  display: block;
+}
+
+.bold {
+  font-weight: bold;
+}
