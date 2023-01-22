@@ -64,6 +64,6 @@ module.exports = {
       directory: 'dev',
     },
     compress: true,
-    port: 3008,
+    port: 3002,
   },
 };
