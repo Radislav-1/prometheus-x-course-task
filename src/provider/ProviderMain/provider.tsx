@@ -10,7 +10,7 @@ export const ProviderMain = (props) => {
   const [listBooks, handleListBooks] = useState<any[any]>(data);
   const [currentBook, handleCurrentBook] = useState(null);
   const [basketBook, handleBasketBook] = useState([]);
-  const [token, handleToken] = useState("KR");
+  const [token, handleToken] = useState("");
 
   const onSelectBook = (value) => {
     handleCurrentBook(value);
